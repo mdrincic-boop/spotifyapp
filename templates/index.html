@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="sr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spotify Radio Control Center</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">♪</div>
+        <div>
+          <h1>Spotify Radio Control Center</h1>
+          <p>Upravljanje profesionalnim radio stanicama</p>
+        </div>
+      </div>
+      <nav>
+        {% if authenticated %}
+        <a class="button ghost" href="{{ url_for('logout') }}">Odjavi se</a>
+        {% else %}
+        <a class="button primary" href="{{ url_for('login') }}">Poveži Spotify</a>
+        {% endif %}
+      </nav>
+    </header>
+
+    <main class="container">
+      <section class="grid" id="status-grid">
+        <article class="status-card">
+          <h3>Streaming Mode</h3>
+          <p id="streaming-mode">Mock</p>
+        </article>
+        <article class="status-card">
+          <h3>Aktivne stanice</h3>
+          <p id="active-stations">0</p>
+        </article>
+        <article class="status-card">
+          <h3>Ukupno playlisti</h3>
+          <p id="playlist-count">0</p>
+        </article>
+        <article class="status-card">
+          <h3>Network</h3>
+          <p>IPv4 Ready</p>
+        </article>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Playliste</h2>
+          <p>Izaberi playlistu koja će biti osnova za radio stanicu.</p>
+        </div>
+        <div class="playlist-grid" id="playlist-grid"></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Kreiraj novu stanicu</h2>
+          <p>Definiši port, mountpoint i Shoutcast parametre.</p>
+        </div>
+        <form id="station-form" class="station-form">
+          <div class="form-row">
+            <label>Ime stanice
+              <input type="text" name="name" placeholder="Spotify Radio 1" required />
+            </label>
+            <label>Port
+              <input type="number" name="port" value="9001" min="9001" required />
+            </label>
+            <label>Mountpoint
+              <input type="text" name="mountpoint" value="stream" required />
+            </label>
+          </div>
+          <div class="form-row">
+            <label>Shoutcast Host
+              <input type="text" name="host" placeholder="stream.example.com" required />
+            </label>
+            <label>User
+              <input type="text" name="user" value="source" required />
+            </label>
+            <label>Password
+              <input type="password" name="password" required />
+            </label>
+            <label>Bitrate
+              <input type="text" name="bitrate" value="192k" required />
+            </label>
+          </div>
+          <div class="form-row">
+            <label>Izabrana playlist
+              <input type="text" name="playlist" id="selected-playlist" placeholder="Izaberi playlistu" readonly required />
+            </label>
+          </div>
+          <button type="submit" class="button primary">Kreiraj stanicu</button>
+        </form>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Aktivne stanice</h2>
+          <p>Start/Stop kontrola i monitoring u real-time.</p>
+        </div>
+        <div class="stations-grid" id="stations-grid"></div>
+      </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+</html>

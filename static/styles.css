@@ -1,0 +1,272 @@
+:root {
+  color-scheme: dark;
+  --bg: #121212;
+  --panel: #1f1f1f;
+  --card: #242424;
+  --accent: #1db954;
+  --text: #f5f5f5;
+  --muted: #b3b3b3;
+  --border: #2f2f2f;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter", "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 6vw;
+  border-bottom: 1px solid var(--border);
+  background: rgba(18, 18, 18, 0.96);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.brand h1 {
+  font-size: 1.4rem;
+  margin-bottom: 4px;
+}
+
+.brand p {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: var(--accent);
+  display: grid;
+  place-items: center;
+  font-size: 1.5rem;
+  color: #081b0f;
+  box-shadow: 0 0 20px rgba(29, 185, 84, 0.4);
+}
+
+.container {
+  padding: 32px 6vw 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.status-card {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  transition: transform 0.2s ease;
+}
+
+.status-card:hover {
+  transform: translateY(-3px);
+}
+
+.status-card h3 {
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.status-card p {
+  font-size: 1.4rem;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.panel-header {
+  margin-bottom: 20px;
+}
+
+.panel-header h2 {
+  font-size: 1.3rem;
+  margin-bottom: 6px;
+}
+
+.panel-header p {
+  color: var(--muted);
+}
+
+.playlist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.playlist-card {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 16px;
+  border: 1px solid transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  cursor: pointer;
+  transition: border 0.2s ease, transform 0.2s ease;
+}
+
+.playlist-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(29, 185, 84, 0.6);
+}
+
+.playlist-card.selected {
+  border-color: var(--accent);
+  box-shadow: 0 0 14px rgba(29, 185, 84, 0.35);
+}
+
+.playlist-cover {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 12px;
+  background: #333;
+  object-fit: cover;
+}
+
+.playlist-meta h4 {
+  margin-bottom: 4px;
+}
+
+.playlist-meta span {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.station-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+input {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #141414;
+  color: var(--text);
+}
+
+.button {
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  border: 1px solid transparent;
+  transition: transform 0.2s ease;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.button.primary {
+  background: var(--accent);
+  color: #051007;
+}
+
+.button.ghost {
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.stations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+.station-card {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 18px;
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.station-card h3 {
+  font-size: 1.05rem;
+}
+
+.station-card p {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.station-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.station-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  background: rgba(29, 185, 84, 0.15);
+  color: var(--accent);
+}
+
+.station-status.stopped {
+  background: rgba(255, 86, 86, 0.15);
+  color: #ff5656;
+}
+
+@media (max-width: 768px) {
+  .topbar {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+}
